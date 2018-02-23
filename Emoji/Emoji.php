@@ -44,7 +44,7 @@ class Emoji extends EmojiSets {
 		return $img;	
 	}
 	
-	public function LoadEmojis($only = false){
+	public function loadEmojis($only = false){
 		if ($only){
 			$this->ListEmoji = json_decode(file_get_contents(__DIR__."/DataJson/emojiList.json"),1);
 			$this->LoadEmoji = true;
@@ -55,12 +55,12 @@ class Emoji extends EmojiSets {
 		$this->LoadEmoji = true;
 	}
 	
-	public function ImageToBase64($img){
+	public static function ImageToBase64($img){
 		$imgData = base64_encode(file_get_contents($img));
 		return 'data: '.mime_content_type($img).';base64,'.$imgData;
 	}
 	
-	public function TextReplace($text){
+	public function textReplace($text){
 		if (!$this->LoadEmoji){
 			$this->LoadEmojis();	
 		}
